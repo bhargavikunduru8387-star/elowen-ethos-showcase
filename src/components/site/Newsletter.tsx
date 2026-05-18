@@ -4,22 +4,20 @@ export function Newsletter() {
   const [email, setEmail] = useState("");
   const [sent, setSent] = useState(false);
   return (
-    <section className="bg-sage-deep text-primary-foreground">
-      <div className="mx-auto max-w-4xl px-6 py-24 text-center">
-        <div className="eyebrow text-primary-foreground/70">Field Notes</div>
-        <h2 className="mt-4 text-4xl md:text-5xl font-serif">
-          Letters from the atelier
+    <section className="relative bg-sage-deep text-ivory overflow-hidden">
+      <div className="absolute inset-0 grain opacity-50" aria-hidden />
+      <div className="relative mx-auto max-w-3xl px-6 py-28 md:py-36 text-center">
+        <div className="eyebrow-mono text-ivory/60">N° 04 — Correspondence</div>
+        <h2 className="mt-8 display text-5xl md:text-7xl">
+          Letters from <span className="italic font-normal">the atelier.</span>
         </h2>
-        <p className="mt-5 text-primary-foreground/80 max-w-xl mx-auto">
-          Quiet dispatches on new collections, the makers behind them, and the
-          slow craft of dressing well. Sent occasionally, never in excess.
+        <p className="mt-8 text-ivory/75 max-w-lg mx-auto leading-relaxed">
+          Quiet dispatches on new editions, the makers behind them, and the
+          slow craft of dressing well. Sent occasionally — never in excess.
         </p>
         <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            if (email) setSent(true);
-          }}
-          className="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+          onSubmit={(e) => { e.preventDefault(); if (email) setSent(true); }}
+          className="mt-12 flex flex-col sm:flex-row gap-0 max-w-md mx-auto border-b border-ivory/40 focus-within:border-ivory transition-colors"
         >
           <label htmlFor="newsletter-email" className="sr-only">Email address</label>
           <input
@@ -28,16 +26,19 @@ export function Newsletter() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="your@email.com"
-            className="flex-1 bg-transparent border-b border-primary-foreground/40 px-1 py-3 text-sm placeholder:text-primary-foreground/50 focus:outline-none focus:border-primary-foreground transition-colors"
+            placeholder="your.name@email.com"
+            className="flex-1 bg-transparent px-1 py-4 text-sm placeholder:text-ivory/45 focus:outline-none"
           />
           <button
             type="submit"
-            className="text-xs uppercase tracking-[0.25em] border border-primary-foreground/60 px-7 py-3 hover:bg-primary-foreground hover:text-sage-deep transition-colors"
+            className="text-[0.7rem] uppercase tracking-[0.28em] py-4 px-4 hover:text-sage transition-colors"
           >
-            {sent ? "Thank you" : "Subscribe"}
+            {sent ? "Thank you →" : "Subscribe →"}
           </button>
         </form>
+        <div className="mt-6 text-xs eyebrow-mono text-ivory/40">
+          No more than once a month. Unsubscribe in a click.
+        </div>
       </div>
     </section>
   );
